@@ -10,7 +10,15 @@ public class Dictionary {
 	}
 	
 	public boolean checkWord(String word) {
-		for(ListIterator<String> it = words.listIterator(); )
+		for(Iterator<String> it = words.iterator(); it.hasNext() ; it.next()) {
+			if(it.equals(word)) {
+				return true;
+			}
+		}
+		return false;
 	}
-
+	
+	Dictionary(){
+		words = new ArrayList<String>();
+	}
 }
