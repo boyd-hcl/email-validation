@@ -9,7 +9,7 @@ public class Dictionary {
 		words.add(word);
 	}
 	
-	public boolean checkWord(String word) {
+	public boolean checkWordHasMatch(String word) {
 		for(Iterator<String> it = words.iterator(); it.hasNext() ; it.next()) {
 			if(it.equals(word)) {
 				return true;
