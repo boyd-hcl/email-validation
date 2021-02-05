@@ -16,7 +16,7 @@ public class EmailValidation {
 				+ "Please input an email address to check that it has the proper format\n"
 				+ "and to verify that it does not match any of a set of existing email addresses."
 				+ "\n"
-				+ "To begin, please input the name of a file containing email addresses, each on a separate line.");
+				+ "To begin, please input the name of a file containing a collection of email addresses, each on a separate line.");
 		
 		//Try to read emails from file until good filename is given by user
 		boolean successful = false;
@@ -32,6 +32,7 @@ public class EmailValidation {
 					s = emailReader.readLine();
 				}
 				emailReader.close();
+				System.out.println("Email address list loaded");
 			}
 			catch(Exception e) {
 				System.out.println("\n\n"
@@ -39,16 +40,19 @@ public class EmailValidation {
 			}
 		}
 		
-		//Read strings from the user, check that they have the proper for mat, 
+		//Read strings from the user, check that they have the proper format, 
 		//and check against a set of strings in a file given by the user
 		String input = "";
 		while(input != "k") {
-			System.out.println("The email list you have provided has been loaded.\n"
-					+ "Please input a candidate email to check that it follows the format and that it matches an email in the list\n"
-					+ "or enter k to exit.");
+			System.out.println("\nPlease input a candidate email to check that it follows the format and that it matches an email in the list\n"
+					+ "or enter k to exit.\n");
+			input = System.console().readLine();
+			if(input.equals("k")) {
+				break;
+			}
 			if (formatChecker.checkFormat(input)) {
 				System.out.println("This is a valid email. Checking if it matches an email on the list...");
-				if (!dictionary.checkWordHasMatch(input)) {
+				if (dictionary.checkWordHasMatch(input)) {
 					System.out.println("This matches one of the email addresses in the list.");
 				}
 				else {
@@ -58,7 +62,6 @@ public class EmailValidation {
 			else {
 				System.out.println("This does not match the format of an email address");
 			}
-			input = System.console().readLine();
 		}
 		
 	}

@@ -1,5 +1,6 @@
 package git.boydhcl;
 import java.util.*;
+import git.boydhcl.*;
 
 
 public class Dictionary {
@@ -10,7 +11,7 @@ public class Dictionary {
 	}
 	
 	public boolean checkWordHasMatch(String word) {
-		for(Iterator<String> it = words.iterator(); it.hasNext() ; it.next()) {
+		for(String it:words) {
 			if(it.equals(word)) {
 				return true;
 			}
